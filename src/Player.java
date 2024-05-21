@@ -69,7 +69,7 @@ public class Player {
         }
     }
 
-    public void collectCoin(){
+    public void collectBall(){
         score++;
     }
     public BufferedImage getPlayerImage() {
