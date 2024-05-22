@@ -18,10 +18,26 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         } catch (IOException e){
             System.out.println(e.getMessage());
         }
-        player = new Player("src/pacmanleft.png","src/pacmanright.png");
+        player = new Player("src/pacmanleft.png","src/pacmanright.png","src/pacmanup.png","src/pacmandown.png");
         balls = new ArrayList<>();
         Ball ball1 = new Ball(110,80);
         balls.add(ball1);
+        Ball ball2 = new Ball(180,80);
+        balls.add(ball2);
+        Ball ball3 = new Ball(260,80);
+        balls.add(ball3);
+        Ball ball4 = new Ball(330,80);
+        balls.add(ball4);
+        Ball ball5 = new Ball(70,160);
+        balls.add(ball5);
+        Ball ball6 = new Ball(70, 230);
+        balls.add(ball6);
+        Ball ball7 = new Ball(180,160);
+        balls.add(ball7);
+        Ball ball8 = new Ball(180,230);
+        balls.add(ball8);
+        Ball ball9 = new Ball(280, 160);
+        balls.add(ball9);
         pressedKeys = new boolean[128];
         addKeyListener(this);
         addMouseListener(this);
@@ -47,6 +63,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         g.drawString("Score: " + player.getScore(), 20, 30);
 
         if (pressedKeys[87]){ //Up (W Key)
+            player.faceUp();
             player.moveUp();
         }
 
@@ -56,6 +73,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         }
 
         if (pressedKeys[83]){ //Right (S Key)
+            player.faceDown();
             player.moveDown();
         }
         if (pressedKeys[68]){  //Down (D Key)

@@ -4,22 +4,31 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 public class Player {
-    private final double MOVE_AMT = 0.3;
+    private final double MOVE_AMT = 0.2;
     private BufferedImage right;
     private BufferedImage left;
+    private BufferedImage up;
+    private BufferedImage down;
     private boolean facingRight;
+    private boolean facingUp;
+    private boolean facingDown;
     private double xCoord;
     private double yCoord;
     private int score;
 
-    public Player(String leftImg, String rightImg){
+    public Player(String leftImg, String rightImg, String upImg, String downImg){
         facingRight = true;
+        facingUp = false;
+        facingDown = false;
         xCoord = 70;
         yCoord = 70;
         score = 0;
         try {
             left = ImageIO.read(new File(leftImg));
             right = ImageIO.read(new File(rightImg));
+            up = ImageIO.read(new File(upImg));
+            down = ImageIO.read(new File(downImg));
+
         } catch(IOException e){
             System.out.println(e.getMessage());
         }
@@ -39,9 +48,24 @@ public class Player {
 
     public void faceRight(){
         facingRight = true;
+        facingUp = false;
+        facingDown = false;
     }
 
     public void faceLeft(){
+        facingRight = false;
+        facingUp = false;
+        facingDown = false;
+    }
+    public void faceUp(){
+        facingUp = true;
+        facingRight = false;
+        facingDown = false;
+    }
+
+    public void faceDown(){
+        facingDown = true;
+        facingUp = false;
         facingRight = false;
     }
 
@@ -75,7 +99,14 @@ public class Player {
     public BufferedImage getPlayerImage() {
         if (facingRight) {
             return right;
-        } else {
+        }
+        else if (facingUp){
+            return up;
+        }
+        else if (facingDown){
+            return down;
+        }
+        else {
             return left;
         }
     }
