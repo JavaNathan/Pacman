@@ -20,6 +20,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         }
         player = new Player("src/pacmanleft.png","src/pacmanright.png");
         balls = new ArrayList<>();
+        Ball ball1 = new Ball(110,80);
+        balls.add(ball1);
         pressedKeys = new boolean[128];
         addKeyListener(this);
         addMouseListener(this);
@@ -29,9 +31,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(background,0,0,null);
+        g.drawImage(background,40,50,null);
         g.drawImage(player.getPlayerImage(),player.getxCoord(),player.getyCoord(),null);
-
         for (int i = 0; i < balls.size(); i++){
             Ball ball = balls.get(i);
             g.drawImage(ball.getImage(),ball.getxCoord(),ball.getyCoord(),null);
@@ -50,10 +51,17 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         }
 
         if (pressedKeys[65]){  //Left (A Key)
+            player.faceLeft();
             player.moveLeft();
         }
 
-        if (pressedKeys[83])
+        if (pressedKeys[83]){ //Right (S Key)
+            player.moveDown();
+        }
+        if (pressedKeys[68]){  //Down (D Key)
+            player.faceRight();
+            player.moveRight();
+        }
     }
 
     public void keyTyped(KeyEvent e) { } // unimplemented

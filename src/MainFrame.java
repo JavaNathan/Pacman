@@ -1,7 +1,7 @@
 import javax.swing.*;
+import java.awt.*;
 public class MainFrame implements Runnable{
     private GraphicsPanel panel;
-
     public MainFrame(){
         JFrame frame = new JFrame("Pacman");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -10,7 +10,6 @@ public class MainFrame implements Runnable{
 
         panel = new GraphicsPanel();
         frame.add(panel);
-
         frame.setVisible(true);
 
         Thread thread = new Thread(this);

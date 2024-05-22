@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 public class Player {
-    private final double MOVE_AMT = 0.2;
+    private final double MOVE_AMT = 0.3;
     private BufferedImage right;
     private BufferedImage left;
     private boolean facingRight;
@@ -14,8 +14,8 @@ public class Player {
 
     public Player(String leftImg, String rightImg){
         facingRight = true;
-        xCoord = 50;
-        yCoord = 50;
+        xCoord = 70;
+        yCoord = 70;
         score = 0;
         try {
             left = ImageIO.read(new File(leftImg));
@@ -46,25 +46,25 @@ public class Player {
     }
 
     public void moveRight() {
-        if (xCoord + MOVE_AMT <= 920) {
+        if (xCoord + MOVE_AMT <= 670) {
             xCoord += MOVE_AMT;
         }
     }
 
     public void moveLeft() {
-        if (xCoord - MOVE_AMT >= 0) {
+        if (xCoord - MOVE_AMT >= 70) {
             xCoord -= MOVE_AMT;
         }
     }
 
     public void moveUp() {
-        if (yCoord - MOVE_AMT >= 0) {
+        if (yCoord - MOVE_AMT >= 70) {
             yCoord -= MOVE_AMT;
         }
     }
 
     public void moveDown() {
-        if (yCoord + MOVE_AMT <= 435) {
+        if (yCoord + MOVE_AMT <= 665) {
             yCoord += MOVE_AMT;
         }
     }
