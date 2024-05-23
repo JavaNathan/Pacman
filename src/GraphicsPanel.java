@@ -159,6 +159,12 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         super.paintComponent(g);
         g.drawImage(background,40,50,null);
         g.drawImage(player.getPlayerImage(),player.getxCoord(),player.getyCoord(),null);
+        if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() <= 70){
+            player.xCoord = 660;
+        }
+        if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() >= 665){
+            player.xCoord = 80;
+        }
         for (int i = 0; i < balls.size(); i++){
             Ball ball = balls.get(i);
             g.drawImage(ball.getImage(),ball.getxCoord(),ball.getyCoord(),null);

@@ -12,7 +12,7 @@ public class Player {
     private boolean facingRight;
     private boolean facingUp;
     private boolean facingDown;
-    private double xCoord;
+    public double xCoord;
     private double yCoord;
     private int score;
 
@@ -88,7 +88,7 @@ public class Player {
     }
 
     public void moveDown() {
-        if (yCoord + MOVE_AMT <= 665) {
+        if (yCoord + MOVE_AMT <= 670) {
             yCoord += MOVE_AMT;
         }
     }
