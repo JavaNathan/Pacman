@@ -177,6 +177,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
 
         g.setFont(new Font("Courier New", Font.BOLD, 20));
         g.drawString("Score: " + player.getScore(), 20, 30);
+        g.drawString("X-Coordinates: " + player.getxCoord(), 200, 30);
+        g.drawString("Y-Coordinates: " + player.getyCoord(), 450,30);
 
         if (pressedKeys[87]){ //Up (W Key)
             player.faceUp();

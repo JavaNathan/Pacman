@@ -76,19 +76,22 @@ public class Player {
     }
 
     public void moveLeft() {
-        if (xCoord - MOVE_AMT >= 70) {
+        if (xCoord - MOVE_AMT >= 70 &&
+        !(xCoord <= 179 && yCoord >= 246 && yCoord <= 322)) {
             xCoord -= MOVE_AMT;
         }
     }
 
     public void moveUp() {
-        if (yCoord - MOVE_AMT >= 70) {
+        if (yCoord - MOVE_AMT >= 70 &&
+        !(yCoord <= 348 && xCoord >= 70 && xCoord <= 170)) {
             yCoord -= MOVE_AMT;
         }
     }
 
     public void moveDown() {
-        if (yCoord + MOVE_AMT <= 670) {
+        if (yCoord + MOVE_AMT <= 670 &&
+        !(xCoord >= 70 && xCoord <= 160 && yCoord >= 223)) {
             yCoord += MOVE_AMT;
         }
     }
