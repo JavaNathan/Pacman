@@ -6,11 +6,20 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
     private BufferedImage background;
     private Player player;
+    private Enemy orangeGhost;
+    private Enemy blueGhost;
+    private Enemy pinkGhost;
+    private Enemy redGhost;
     private boolean[] pressedKeys;
+    private boolean wakaPlaying;
     private ArrayList<Ball> balls;
+    private Clip wakaSound;
 
     public GraphicsPanel(){
         try {
@@ -19,6 +28,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
             System.out.println(e.getMessage());
         }
         player = new Player("src/pacmanleft.png","src/pacmanright.png","src/pacmanup.png","src/pacmandown.png");
+        orangeGhost = new Enemy("src/orangeghostleft.png","src/orangeghostright.png",322,340);
+        blueGhost = new Enemy("src/blueghostleft.png","src/blueghostright.png",347,340);
+        pinkGhost = new Enemy("src/pinkghostleft.png","src/pinkghostright.png",389,340);
+        redGhost = new Enemy("src/redghostleft.png","src/redghostright.png",430,340);
+
         balls = new ArrayList<>();
         Ball ball1 = new Ball(110,80);
         balls.add(ball1);
@@ -148,6 +162,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         balls.add(ball63);
         Ball ball64 = new Ball(550,300);
         balls.add(ball64);
+        Ball ball65 = new Ball(90,360);
+        balls.add(ball65);
+        Ball ball66 = new Ball(640,360);
+        balls.add(ball66);
+        wakaPlaying = false;
         pressedKeys = new boolean[128];
         addKeyListener(this);
         addMouseListener(this);
@@ -155,10 +174,29 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         requestFocusInWindow();
     }
 
+    private void playWaka(){
+        if (wakaPlaying){
+            return;
+        }
+        try {
+            AudioInputStream audioinputstream = AudioSystem.getAudioInputStream(new File("src/Waka.wav").getAbsoluteFile());
+            wakaSound = AudioSystem.getClip();
+            wakaSound.open(audioinputstream);
+            wakaSound.loop(Clip.LOOP_CONTINUOUSLY);
+            wakaSound.start();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.drawImage(background,40,50,null);
         g.drawImage(player.getPlayerImage(),player.getxCoord(),player.getyCoord(),null);
+        g.drawImage(orangeGhost.getEnemyImage(),orangeGhost.getxCoord(),orangeGhost.getyCoord(),null);
+        g.drawImage(blueGhost.getEnemyImage(),blueGhost.getxCoord(),blueGhost.getyCoord(),null);
+        g.drawImage(pinkGhost.getEnemyImage(),pinkGhost.getxCoord(),pinkGhost.getyCoord(),null);
+        g.drawImage(redGhost.getEnemyImage(),redGhost.getxCoord(),redGhost.getyCoord(),null);
         if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() <= 70){
             player.xCoord = 660;
         }
@@ -183,21 +221,31 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         if (pressedKeys[87]){ //Up (W Key)
             player.faceUp();
             player.moveUp();
+            playWaka();
+            wakaPlaying = true;
         }
 
         if (pressedKeys[65]){  //Left (A Key)
             player.faceLeft();
             player.moveLeft();
+            playWaka();
+            wakaPlaying = true;
         }
 
         if (pressedKeys[83]){ //Right (S Key)
             player.faceDown();
             player.moveDown();
+            playWaka();
+            wakaPlaying = true;
+
         }
         if (pressedKeys[68]){  //Down (D Key)
             player.faceRight();
             player.moveRight();
+            playWaka();
+            wakaPlaying = true;
         }
+
     }
 
     public void keyTyped(KeyEvent e) { } // unimplemented
@@ -212,6 +260,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         pressedKeys[key] = false;
+        wakaSound.close();
+        wakaPlaying = false;
     }
 
     // ----- MouseListener interface methods -----

@@ -3,35 +3,47 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-public class Player {
+public class Enemy {
     private final double MOVE_AMT = 0.2;
-    private BufferedImage right;
-    private BufferedImage left;
-    private BufferedImage up;
-    private BufferedImage down;
-    private boolean facingRight;
-    private boolean facingUp;
-    private boolean facingDown;
-    public double xCoord;
+    private double xCoord;
     private double yCoord;
-    private int score;
+    private BufferedImage leftImg;
+    private BufferedImage rightImg;
+    private boolean facingRight;
 
-    public Player(String leftImg, String rightImg, String upImg, String downImg){
+    public Enemy(String leftImg, String rightImg, int xCoord, int yCoord){
         facingRight = true;
-        facingUp = false;
-        facingDown = false;
-        xCoord = 70;
-        yCoord = 70;
-        score = 0;
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
         try {
-            left = ImageIO.read(new File(leftImg));
-            right = ImageIO.read(new File(rightImg));
-            up = ImageIO.read(new File(upImg));
-            down = ImageIO.read(new File(downImg));
-
-        } catch(IOException e){
-            System.out.println(e.getMessage());
+            this.leftImg = ImageIO.read(new File(leftImg));
+            this.rightImg = ImageIO.read(new File(rightImg));
+        } catch(IOException exception){
+            System.out.println(exception.getMessage());
         }
+    }
+
+    public BufferedImage getEnemyImage(){
+        if (facingRight){
+            return rightImg;
+        }
+        else{
+            return leftImg;
+        }
+    }
+
+    public Rectangle enemyRect(){
+        int imageHeight = getEnemyImage().getHeight();
+        int imageWidth = getEnemyImage().getWidth();
+        return new Rectangle((int) xCoord, (int) yCoord, imageWidth, imageHeight);
+    }
+
+    public void faceRight(){
+        facingRight = true;
+    }
+
+    public void faceLeft(){
+        facingRight = false;
     }
 
     public int getxCoord(){
@@ -41,34 +53,6 @@ public class Player {
     public int getyCoord(){
         return (int) yCoord;
     }
-
-    public int getScore(){
-        return score;
-    }
-
-    public void faceRight(){
-        facingRight = true;
-        facingUp = false;
-        facingDown = false;
-    }
-
-    public void faceLeft(){
-        facingRight = false;
-        facingUp = false;
-        facingDown = false;
-    }
-    public void faceUp(){
-        facingUp = true;
-        facingRight = false;
-        facingDown = false;
-    }
-
-    public void faceDown(){
-        facingDown = true;
-        facingUp = false;
-        facingRight = false;
-    }
-
     public void moveRight() {
         if (xCoord + MOVE_AMT <= 670 &&
         !(xCoord >= 195 && xCoord <= 205 && yCoord >= 544 && yCoord <= 642) &&
@@ -219,29 +203,5 @@ public class Player {
         !(xCoord >= 411 && xCoord <= 540 && yCoord >= 70 && yCoord <= 90)) {
             yCoord += MOVE_AMT;
         }
-    }
-
-    public void collectBall(){
-        score++;
-    }
-    public BufferedImage getPlayerImage() {
-        if (facingRight) {
-            return right;
-        }
-        else if (facingUp){
-            return up;
-        }
-        else if (facingDown){
-            return down;
-        }
-        else {
-            return left;
-        }
-    }
-
-    public Rectangle playerRect() {
-        int imageHeight = getPlayerImage().getHeight();
-        int imageWidth = getPlayerImage().getWidth();
-        return new Rectangle((int) xCoord , (int) yCoord, imageWidth, imageHeight);
     }
 }
