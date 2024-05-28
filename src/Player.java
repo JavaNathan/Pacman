@@ -109,8 +109,8 @@ public class Player {
     public void moveLeft() {
         if (xCoord - MOVE_AMT >= 70 &&
         !(xCoord <= 195 && xCoord >= 185 && yCoord >= 236 && yCoord <= 334) &&
-        !(xCoord <= 189 && xCoord >= 179 && yCoord >= 360 && yCoord <= 450) &&
-        !(xCoord <= 123 && xCoord >= 113 && yCoord <= 585 && yCoord >= 556) &&
+        !(xCoord <= 189 && xCoord >= 179 && yCoord >= 360 && yCoord <= 465) &&
+        !(xCoord <= 123 && xCoord >= 110 && yCoord <= 595 && yCoord >= 550) &&
         !(xCoord <= 329 && xCoord >= 319 && yCoord <= 654 && yCoord >= 613) &&
         !(xCoord <= 265 && xCoord >= 255 && yCoord <= 652 && yCoord >= 556) &&
         !(xCoord >= 174 && xCoord <= 184 && yCoord <= 579 && yCoord >= 494) &&
