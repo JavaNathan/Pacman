@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 public class Player {
-    private final double MOVE_AMT = 0.2;
+    private final double MOVE_AMT = 0.15;
     private BufferedImage right;
     private BufferedImage left;
     private BufferedImage up;
@@ -162,7 +162,7 @@ public class Player {
         !(yCoord >= 534 && yCoord <= 544 && xCoord >= 565 && xCoord <= 653) &&
         !(yCoord >= 450 && yCoord <= 472 && xCoord >= 570 && xCoord <= 700) &&
         !(yCoord >= 471 && yCoord <= 481 && xCoord >= 502 && xCoord <= 535) &&
-        !(yCoord >= 470 && yCoord <= 480 && xCoord >= 206 && xCoord <= 246) &&
+        !(yCoord >= 470 && yCoord <= 475 && xCoord >= 205 && xCoord <= 254) &&
         !(yCoord >= 472 && yCoord <= 482 && xCoord >= 282 && xCoord <= 458) &&
         !(yCoord >= 531 && yCoord <= 541 && xCoord >= 352 && xCoord <= 391) &&
         !(yCoord >= 337 && yCoord <= 347 && xCoord >= 565 && xCoord <= 700) &&
@@ -201,7 +201,7 @@ public class Player {
         !(xCoord >= 634 && xCoord <= 700 && yCoord >= 546 && yCoord <= 556) &&
         !(xCoord >= 568 && xCoord <= 653 && yCoord >= 480 && yCoord <= 490) &&
         !(xCoord >= 494 && xCoord <= 534 && yCoord >= 350 && yCoord <= 360) &&
-        !(xCoord >= 201 && xCoord <= 248 && yCoord >= 360 && yCoord <= 370) &&
+        !(xCoord >= 201 && xCoord <= 254 && yCoord >= 360 && yCoord <= 370) &&
         !(xCoord >= 280 && xCoord <= 457 && yCoord >= 414 && yCoord <= 424) &&
         !(xCoord >= 565 && xCoord <= 700 && yCoord >= 353 && yCoord <= 370) &&
         !(xCoord >= 281 && xCoord <= 456 && yCoord >= 294 && yCoord <= 324) &&
