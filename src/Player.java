@@ -5,16 +5,28 @@ import java.io.File;
 import java.io.IOException;
 public class Player {
     private final double MOVE_AMT = 0.15;
-    private BufferedImage right;
-    private BufferedImage left;
-    private BufferedImage up;
-    private BufferedImage down;
+    private BufferedImage rightImg;
+    private BufferedImage leftImg;
+    private BufferedImage upImg;
+    private BufferedImage downImg;
     private boolean facingRight;
     private boolean facingUp;
     private boolean facingDown;
     public double xCoord;
-    private double yCoord;
+    public double yCoord;
     private int score;
+
+    public Player(String leftImg, String rightImg, int xCoord, int yCoord){
+        facingRight = true;
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
+        try {
+            this.leftImg = ImageIO.read(new File(leftImg));
+            this.rightImg = ImageIO.read(new File(rightImg));
+        } catch(IOException exception){
+            System.out.println(exception.getMessage());
+        }
+    }
 
     public Player(String leftImg, String rightImg, String upImg, String downImg){
         facingRight = true;
@@ -24,10 +36,10 @@ public class Player {
         yCoord = 70;
         score = 0;
         try {
-            left = ImageIO.read(new File(leftImg));
-            right = ImageIO.read(new File(rightImg));
-            up = ImageIO.read(new File(upImg));
-            down = ImageIO.read(new File(downImg));
+            this.leftImg = ImageIO.read(new File(leftImg));
+            this.rightImg = ImageIO.read(new File(rightImg));
+            this.upImg = ImageIO.read(new File(upImg));
+            this.downImg = ImageIO.read(new File(downImg));
 
         } catch(IOException e){
             System.out.println(e.getMessage());
@@ -226,16 +238,16 @@ public class Player {
     }
     public BufferedImage getPlayerImage() {
         if (facingRight) {
-            return right;
+            return rightImg;
         }
         else if (facingUp){
-            return up;
+            return upImg;
         }
         else if (facingDown){
-            return down;
+            return downImg;
         }
         else {
-            return left;
+            return leftImg;
         }
     }
 

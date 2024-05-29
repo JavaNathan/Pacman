@@ -197,6 +197,12 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         g.drawImage(blueGhost.getEnemyImage(),blueGhost.getxCoord(),blueGhost.getyCoord(),null);
         g.drawImage(pinkGhost.getEnemyImage(),pinkGhost.getxCoord(),pinkGhost.getyCoord(),null);
         g.drawImage(redGhost.getEnemyImage(),redGhost.getxCoord(),redGhost.getyCoord(),null);
+        if (orangeGhost.enemyRect().intersects(player.playerRect()) ||
+        blueGhost.enemyRect().intersects(player.playerRect()) ||
+        pinkGhost.enemyRect().intersects(player.playerRect()) ||
+        redGhost.enemyRect().intersects(player.playerRect())){
+            System.exit(0);
+        }
         if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() <= 70){
             player.xCoord = 660;
         }
