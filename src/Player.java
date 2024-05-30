@@ -15,6 +15,7 @@ public class Player {
     public double xCoord;
     public double yCoord;
     private int score;
+    public int lives;
 
     public Player(String leftImg, String rightImg, int xCoord, int yCoord){
         facingRight = true;
@@ -29,6 +30,7 @@ public class Player {
     }
 
     public Player(String leftImg, String rightImg, String upImg, String downImg){
+        lives = 3;
         facingRight = true;
         facingUp = false;
         facingDown = false;
@@ -56,6 +58,9 @@ public class Player {
 
     public int getScore(){
         return score;
+    }
+    public int getLives(){
+        return lives;
     }
 
     public void faceRight(){

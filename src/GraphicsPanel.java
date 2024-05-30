@@ -32,7 +32,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         blueGhost = new Enemy("src/blueghostleft.png","src/blueghostright.png",347,340);
         pinkGhost = new Enemy("src/pinkghostleft.png","src/pinkghostright.png",389,340);
         redGhost = new Enemy("src/redghostleft.png","src/redghostright.png",430,340);
-
         balls = new ArrayList<>();
         Ball ball1 = new Ball(110,80);
         balls.add(ball1);
@@ -201,7 +200,9 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         blueGhost.enemyRect().intersects(player.playerRect()) ||
         pinkGhost.enemyRect().intersects(player.playerRect()) ||
         redGhost.enemyRect().intersects(player.playerRect())){
-            System.exit(0);
+            player.xCoord = 70;
+            player.yCoord = 70;
+            player.lives--;
         }
         if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() <= 70){
             player.xCoord = 660;
@@ -221,8 +222,9 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
 
         g.setFont(new Font("Courier New", Font.BOLD, 20));
         g.drawString("Score: " + player.getScore(), 20, 30);
-        g.drawString("X-Coordinates: " + player.getxCoord(), 200, 30);
-        g.drawString("Y-Coordinates: " + player.getyCoord(), 450,30);
+        g.drawString("X-Coordinates: " + player.getxCoord(), 300, 30);
+        g.drawString("Y-Coordinates: " + player.getyCoord(), 550,30);
+        g.drawString("Lives: " + player.getLives(), 150, 30);
 
         if (pressedKeys[87]){ //Up (W Key)
             player.faceUp();
