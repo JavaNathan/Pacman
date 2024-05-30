@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 public class Player {
-    private final double MOVE_AMT = 0.15;
+    private final double MOVE_AMT = 0.175;
     private BufferedImage rightImg;
     private BufferedImage leftImg;
     private BufferedImage upImg;
