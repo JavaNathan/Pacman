@@ -3,15 +3,15 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-public class Enemy {
+public class pinkGhost {
     private final double MOVE_AMT = 0.2;
-    private double xCoord;
+    public double xCoord;
     private double yCoord;
     private BufferedImage leftImg;
     private BufferedImage rightImg;
     private boolean facingRight;
 
-    public Enemy(String leftImg, String rightImg, int xCoord, int yCoord){
+    public pinkGhost(String leftImg, String rightImg, int xCoord, int yCoord){
         facingRight = true;
         this.xCoord = xCoord;
         this.yCoord = yCoord;

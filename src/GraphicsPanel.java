@@ -10,12 +10,13 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
+    private final double MOVE_AMT = 0.2;
     private BufferedImage background;
     private Player player;
-    private Enemy orangeGhost;
-    private Enemy blueGhost;
-    private Enemy pinkGhost;
-    private Enemy redGhost;
+    private orangeGhost orangeGhost;
+    private blueGhost blueGhost;
+    private pinkGhost pinkGhost;
+    private redGhost redGhost;
     private boolean[] pressedKeys;
     private boolean wakaPlaying;
     private ArrayList<Ball> balls;
@@ -28,10 +29,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
             System.out.println(e.getMessage());
         }
         player = new Player("src/pacmanleft.png","src/pacmanright.png","src/pacmanup.png","src/pacmandown.png");
-        orangeGhost = new Enemy("src/orangeghostleft.png","src/orangeghostright.png",322,340);
-        blueGhost = new Enemy("src/blueghostleft.png","src/blueghostright.png",347,340);
-        pinkGhost = new Enemy("src/pinkghostleft.png","src/pinkghostright.png",389,340);
-        redGhost = new Enemy("src/redghostleft.png","src/redghostright.png",430,340);
+        orangeGhost = new orangeGhost("src/orangeghostleft.png","src/orangeghostright.png",322,340);
+        blueGhost = new blueGhost("src/blueghostleft.png","src/blueghostright.png",347,340);
+        pinkGhost = new pinkGhost("src/pinkghostleft.png","src/pinkghostright.png",389,340);
+        redGhost = new redGhost("src/redghostleft.png","src/redghostright.png",430,340);
+
         balls = new ArrayList<>();
         Ball ball1 = new Ball(110,80);
         balls.add(ball1);
