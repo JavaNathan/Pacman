@@ -10,7 +10,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
-    private final double MOVE_AMT = 0.2;
+    private double MOVE_AMT = 0.2;
     private BufferedImage background;
     private Player player;
     private orangeGhost orangeGhost;
@@ -205,58 +205,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
             player.yCoord = 70;
             player.lives--;
         }
-        while (orangeGhost.xCoord + MOVE_AMT <= 368){
+        if (orangeGhost.getxCoord() != 368){
             orangeGhost.xCoord += MOVE_AMT;
-        }
-        while (orangeGhost.yCoord - MOVE_AMT >= 280){
-            orangeGhost.yCoord -= MOVE_AMT;
-        }
-        if (orangeGhost.xCoord == 368 && orangeGhost.yCoord == 280){
-            while (orangeGhost.xCoord - MOVE_AMT >= 332){
-                orangeGhost.faceLeft();
-                orangeGhost.xCoord -= MOVE_AMT;
-            }
-            while (orangeGhost.yCoord - MOVE_AMT >= 220){
+            if (orangeGhost.getyCoord() != 282){
                 orangeGhost.yCoord -= MOVE_AMT;
-            }
-            while (orangeGhost.xCoord - MOVE_AMT >= 263){
-                orangeGhost.xCoord -= MOVE_AMT;
-            }
-            while (orangeGhost.yCoord - MOVE_AMT >= 159){
-                orangeGhost.yCoord -= MOVE_AMT;
-            }
-            while (orangeGhost.xCoord - MOVE_AMT >= 191){
-                orangeGhost.xCoord -= MOVE_AMT;
-            }
-            while (orangeGhost.yCoord - MOVE_AMT >= 79){
-                orangeGhost.yCoord -= MOVE_AMT;
-            }
-            while (orangeGhost.xCoord - MOVE_AMT >= 71){
-                orangeGhost.xCoord -= MOVE_AMT;
-            }
-            while (orangeGhost.yCoord + MOVE_AMT <= 215){
-                orangeGhost.yCoord += MOVE_AMT;
-            }
-            while (orangeGhost.xCoord + MOVE_AMT <= 185){
-                orangeGhost.xCoord += MOVE_AMT;
-            }
-            while (orangeGhost.yCoord + MOVE_AMT <= 346){
-                orangeGhost.yCoord += MOVE_AMT;
-            }
-            while (orangeGhost.xCoord - MOVE_AMT >= 70){
-                orangeGhost.xCoord -= MOVE_AMT;
-            }
-            if (orangeGhost.xCoord == 70){
-                orangeGhost.xCoord = 659;
-            }
-            while (orangeGhost.xCoord - MOVE_AMT >= 484){
-                orangeGhost.xCoord -= MOVE_AMT;
-            }
-            while (orangeGhost.yCoord - MOVE_AMT >= 280){
-                orangeGhost.yCoord -= MOVE_AMT;
-            }
-            while (orangeGhost.xCoord - MOVE_AMT >= 368){
-                orangeGhost.xCoord -= MOVE_AMT;
             }
         }
         if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() <= 70){

@@ -9,8 +9,12 @@ public class orangeGhost {
     private BufferedImage leftImg;
     private BufferedImage rightImg;
     private boolean facingRight;
+    public boolean moveX;
+    public boolean moveY;
 
     public orangeGhost(String leftImg, String rightImg, int xCoord, int yCoord){
+        moveX = true;
+        moveY = false;
         facingRight = true;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
@@ -37,6 +41,24 @@ public class orangeGhost {
         return new Rectangle((int) xCoord, (int) yCoord, imageWidth, imageHeight);
     }
 
+    public void noMoveX(){
+        moveX = false;
+    }
+    public void canMoveX(){
+        moveX = true;
+    }
+    public void noMoveY(){
+        moveY = false;
+    }
+    public void canMoveY(){
+        moveY = true;
+    }
+    public boolean isMovingX(){
+        return moveX;
+    }
+    public boolean isMovingY(){
+        return moveY;
+    }
     public void faceRight(){
         facingRight = true;
     }
