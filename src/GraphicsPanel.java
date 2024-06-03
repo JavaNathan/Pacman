@@ -33,7 +33,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         blueGhost = new blueGhost("src/blueghostleft.png","src/blueghostright.png",347,340);
         pinkGhost = new pinkGhost("src/pinkghostleft.png","src/pinkghostright.png",389,340);
         redGhost = new redGhost("src/redghostleft.png","src/redghostright.png",430,340);
-
         balls = new ArrayList<>();
         Ball ball1 = new Ball(110,80);
         balls.add(ball1);
@@ -206,6 +205,60 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
             player.yCoord = 70;
             player.lives--;
         }
+        while (orangeGhost.xCoord + MOVE_AMT <= 368){
+            orangeGhost.xCoord += MOVE_AMT;
+        }
+        while (orangeGhost.yCoord - MOVE_AMT >= 280){
+            orangeGhost.yCoord -= MOVE_AMT;
+        }
+        if (orangeGhost.xCoord == 368 && orangeGhost.yCoord == 280){
+            while (orangeGhost.xCoord - MOVE_AMT >= 332){
+                orangeGhost.faceLeft();
+                orangeGhost.xCoord -= MOVE_AMT;
+            }
+            while (orangeGhost.yCoord - MOVE_AMT >= 220){
+                orangeGhost.yCoord -= MOVE_AMT;
+            }
+            while (orangeGhost.xCoord - MOVE_AMT >= 263){
+                orangeGhost.xCoord -= MOVE_AMT;
+            }
+            while (orangeGhost.yCoord - MOVE_AMT >= 159){
+                orangeGhost.yCoord -= MOVE_AMT;
+            }
+            while (orangeGhost.xCoord - MOVE_AMT >= 191){
+                orangeGhost.xCoord -= MOVE_AMT;
+            }
+            while (orangeGhost.yCoord - MOVE_AMT >= 79){
+                orangeGhost.yCoord -= MOVE_AMT;
+            }
+            while (orangeGhost.xCoord - MOVE_AMT >= 71){
+                orangeGhost.xCoord -= MOVE_AMT;
+            }
+            while (orangeGhost.yCoord + MOVE_AMT <= 215){
+                orangeGhost.yCoord += MOVE_AMT;
+            }
+            while (orangeGhost.xCoord + MOVE_AMT <= 185){
+                orangeGhost.xCoord += MOVE_AMT;
+            }
+            while (orangeGhost.yCoord + MOVE_AMT <= 346){
+                orangeGhost.yCoord += MOVE_AMT;
+            }
+            while (orangeGhost.xCoord - MOVE_AMT >= 70){
+                orangeGhost.xCoord -= MOVE_AMT;
+            }
+            if (orangeGhost.xCoord == 70){
+                orangeGhost.xCoord = 659;
+            }
+            while (orangeGhost.xCoord - MOVE_AMT >= 484){
+                orangeGhost.xCoord -= MOVE_AMT;
+            }
+            while (orangeGhost.yCoord - MOVE_AMT >= 280){
+                orangeGhost.yCoord -= MOVE_AMT;
+            }
+            while (orangeGhost.xCoord - MOVE_AMT >= 368){
+                orangeGhost.xCoord -= MOVE_AMT;
+            }
+        }
         if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() <= 70){
             player.xCoord = 660;
         }
@@ -270,6 +323,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         pressedKeys[key] = false;
+        wakaSound.stop();
         wakaSound.close();
         wakaPlaying = false;
     }
