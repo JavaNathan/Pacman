@@ -10,7 +10,6 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
-    private final double MOVE_AMT = 0.1;
     private BufferedImage background;
     private Player player;
     private orangeGhost orangeGhost1;
@@ -21,8 +20,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
     private boolean wakaPlaying;
     private ArrayList<Ball> balls;
     private Clip wakaSound;
-    private boolean moveX;
-    private boolean moveY;
 
     public GraphicsPanel(){
         try {
@@ -30,8 +27,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         } catch (IOException e){
             System.out.println(e.getMessage());
         }
-        moveX = true;
-        moveY = false;
         player = new Player("src/pacmanleft.png","src/pacmanright.png","src/pacmanup.png","src/pacmandown.png");
         orangeGhost1 = new orangeGhost("src/orangeghostleft.png","src/orangeghostright.png",322,340);
         blueGhost1 = new blueGhost("src/blueghostleft.png","src/blueghostright.png",347,340);
@@ -209,59 +204,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
             player.yCoord = 70;
             player.lives--;
         }
-        if (orangeGhost1.getxCoord() != 368) {
-            orangeGhost1.xCoord += MOVE_AMT;
-        }
-        if (orangeGhost1.getxCoord() == 368 && orangeGhost1.getyCoord() != 300){
-            orangeGhost1.yCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getyCoord() == 300 && orangeGhost1.getxCoord() != 332){
-            orangeGhost1.faceLeft();
-            orangeGhost1.xCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getxCoord() == 332 && orangeGhost1.getyCoord() != 220){
-            orangeGhost1.yCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getyCoord() == 220 && orangeGhost1.getxCoord() != 263){
-            orangeGhost1.xCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getxCoord() == 263 && orangeGhost1.getyCoord() != 159){
-            orangeGhost1.yCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getyCoord() == 159 && orangeGhost1.getxCoord() != 191){
-            orangeGhost1.xCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getxCoord() == 191 && orangeGhost1.getyCoord() != 79){
-            orangeGhost1.yCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getyCoord() == 79 && orangeGhost1.getxCoord() != 71){
-            orangeGhost1.xCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getxCoord() == 71 && orangeGhost1.getyCoord() != 215){
-            orangeGhost1.yCoord += MOVE_AMT;
-        }
-        if (orangeGhost1.getyCoord() == 215 && orangeGhost1.getxCoord() != 185){
-            orangeGhost1.faceRight();
-            orangeGhost1.xCoord += MOVE_AMT;
-        }
-        if (orangeGhost1.getxCoord() == 185 && orangeGhost1.getyCoord() != 346){
-            orangeGhost1.yCoord += MOVE_AMT;
-        }
-        if (orangeGhost1.getyCoord() == 346 && orangeGhost1.getxCoord() != 70){
-            orangeGhost1.xCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getxCoord() == 70){
-            orangeGhost1.xCoord = 659;
-        }
-        if (orangeGhost1.getxCoord() == 659 && orangeGhost1.getxCoord() != 484){
-            orangeGhost1.xCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getxCoord() == 484 && orangeGhost1.getyCoord() != 280){
-            orangeGhost1.yCoord -= MOVE_AMT;
-        }
-        if (orangeGhost1.getyCoord() == 280 && orangeGhost1.getxCoord() != 368){
-            orangeGhost1.xCoord -= MOVE_AMT;
-        }
+        orangeGhost1.move();
         if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() <= 70){
             player.xCoord = 660;
         }
