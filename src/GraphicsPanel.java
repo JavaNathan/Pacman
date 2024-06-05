@@ -10,17 +10,19 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
-    private double MOVE_AMT = 0.2;
+    private final double MOVE_AMT = 0.1;
     private BufferedImage background;
     private Player player;
-    private orangeGhost orangeGhost;
-    private blueGhost blueGhost;
-    private pinkGhost pinkGhost;
-    private redGhost redGhost;
+    private orangeGhost orangeGhost1;
+    private blueGhost blueGhost1;
+    private pinkGhost pinkGhost1;
+    private redGhost redGhost1;
     private boolean[] pressedKeys;
     private boolean wakaPlaying;
     private ArrayList<Ball> balls;
     private Clip wakaSound;
+    private boolean moveX;
+    private boolean moveY;
 
     public GraphicsPanel(){
         try {
@@ -28,11 +30,13 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         } catch (IOException e){
             System.out.println(e.getMessage());
         }
+        moveX = true;
+        moveY = false;
         player = new Player("src/pacmanleft.png","src/pacmanright.png","src/pacmanup.png","src/pacmandown.png");
-        orangeGhost = new orangeGhost("src/orangeghostleft.png","src/orangeghostright.png",322,340);
-        blueGhost = new blueGhost("src/blueghostleft.png","src/blueghostright.png",347,340);
-        pinkGhost = new pinkGhost("src/pinkghostleft.png","src/pinkghostright.png",389,340);
-        redGhost = new redGhost("src/redghostleft.png","src/redghostright.png",430,340);
+        orangeGhost1 = new orangeGhost("src/orangeghostleft.png","src/orangeghostright.png",322,340);
+        blueGhost1 = new blueGhost("src/blueghostleft.png","src/blueghostright.png",347,340);
+        pinkGhost1 = new pinkGhost("src/pinkghostleft.png","src/pinkghostright.png",389,340);
+        redGhost1 = new redGhost("src/redghostleft.png","src/redghostright.png",430,340);
         balls = new ArrayList<>();
         Ball ball1 = new Ball(110,80);
         balls.add(ball1);
@@ -193,23 +197,70 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         super.paintComponent(g);
         g.drawImage(background,40,50,null);
         g.drawImage(player.getPlayerImage(),player.getxCoord(),player.getyCoord(),null);
-        g.drawImage(orangeGhost.getEnemyImage(),orangeGhost.getxCoord(),orangeGhost.getyCoord(),null);
-        g.drawImage(blueGhost.getEnemyImage(),blueGhost.getxCoord(),blueGhost.getyCoord(),null);
-        g.drawImage(pinkGhost.getEnemyImage(),pinkGhost.getxCoord(),pinkGhost.getyCoord(),null);
-        g.drawImage(redGhost.getEnemyImage(),redGhost.getxCoord(),redGhost.getyCoord(),null);
-        if (orangeGhost.enemyRect().intersects(player.playerRect()) ||
-        blueGhost.enemyRect().intersects(player.playerRect()) ||
-        pinkGhost.enemyRect().intersects(player.playerRect()) ||
-        redGhost.enemyRect().intersects(player.playerRect())){
+        g.drawImage(orangeGhost1.getEnemyImage(),orangeGhost1.getxCoord(),orangeGhost1.getyCoord(),null);
+        g.drawImage(blueGhost1.getEnemyImage(),blueGhost1.getxCoord(),blueGhost1.getyCoord(),null);
+        g.drawImage(pinkGhost1.getEnemyImage(),pinkGhost1.getxCoord(),pinkGhost1.getyCoord(),null);
+        g.drawImage(redGhost1.getEnemyImage(),redGhost1.getxCoord(),redGhost1.getyCoord(),null);
+        if (orangeGhost1.enemyRect().intersects(player.playerRect()) ||
+        blueGhost1.enemyRect().intersects(player.playerRect()) ||
+        pinkGhost1.enemyRect().intersects(player.playerRect()) ||
+        redGhost1.enemyRect().intersects(player.playerRect())){
             player.xCoord = 70;
             player.yCoord = 70;
             player.lives--;
         }
-        if (orangeGhost.getxCoord() != 368){
-            orangeGhost.xCoord += MOVE_AMT;
-            if (orangeGhost.getyCoord() != 282){
-                orangeGhost.yCoord -= MOVE_AMT;
-            }
+        if (orangeGhost1.getxCoord() != 368) {
+            orangeGhost1.xCoord += MOVE_AMT;
+        }
+        if (orangeGhost1.getxCoord() == 368 && orangeGhost1.getyCoord() != 300){
+            orangeGhost1.yCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getyCoord() == 300 && orangeGhost1.getxCoord() != 332){
+            orangeGhost1.faceLeft();
+            orangeGhost1.xCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getxCoord() == 332 && orangeGhost1.getyCoord() != 220){
+            orangeGhost1.yCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getyCoord() == 220 && orangeGhost1.getxCoord() != 263){
+            orangeGhost1.xCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getxCoord() == 263 && orangeGhost1.getyCoord() != 159){
+            orangeGhost1.yCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getyCoord() == 159 && orangeGhost1.getxCoord() != 191){
+            orangeGhost1.xCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getxCoord() == 191 && orangeGhost1.getyCoord() != 79){
+            orangeGhost1.yCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getyCoord() == 79 && orangeGhost1.getxCoord() != 71){
+            orangeGhost1.xCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getxCoord() == 71 && orangeGhost1.getyCoord() != 215){
+            orangeGhost1.yCoord += MOVE_AMT;
+        }
+        if (orangeGhost1.getyCoord() == 215 && orangeGhost1.getxCoord() != 185){
+            orangeGhost1.faceRight();
+            orangeGhost1.xCoord += MOVE_AMT;
+        }
+        if (orangeGhost1.getxCoord() == 185 && orangeGhost1.getyCoord() != 346){
+            orangeGhost1.yCoord += MOVE_AMT;
+        }
+        if (orangeGhost1.getyCoord() == 346 && orangeGhost1.getxCoord() != 70){
+            orangeGhost1.xCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getxCoord() == 70){
+            orangeGhost1.xCoord = 659;
+        }
+        if (orangeGhost1.getxCoord() == 659 && orangeGhost1.getxCoord() != 484){
+            orangeGhost1.xCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getxCoord() == 484 && orangeGhost1.getyCoord() != 280){
+            orangeGhost1.yCoord -= MOVE_AMT;
+        }
+        if (orangeGhost1.getyCoord() == 280 && orangeGhost1.getxCoord() != 368){
+            orangeGhost1.xCoord -= MOVE_AMT;
         }
         if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() <= 70){
             player.xCoord = 660;
