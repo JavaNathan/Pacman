@@ -205,6 +205,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
             player.lives--;
         }
         orangeGhost1.move();
+        blueGhost1.move();
         if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() <= 70){
             player.xCoord = 660;
         }

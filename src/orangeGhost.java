@@ -9,7 +9,7 @@ public class orangeGhost {
     private BufferedImage leftImg;
     private BufferedImage rightImg;
     private boolean facingRight;
-    private final double MOVE_AMT = 0.15;
+    private final double MOVE_AMT = 0.175;
     private boolean moveX;
     private boolean moveY;
 
@@ -59,58 +59,145 @@ public class orangeGhost {
     }
 
     public void move(){
-        if (getxCoord() != 368 && getyCoord() != 300) {
+        if (getxCoord() != 368 && getyCoord() == 340 && moveX){
             xCoord += MOVE_AMT;
+            if (getxCoord() == 368){
+                moveX = false;
+            }
         }
-        if (getxCoord() == 368 && getyCoord() != 300){
+        if (getyCoord() == 340){
+            moveY = true;
+        }
+        if (getxCoord() == 368 && getyCoord() != 295 && moveY){
             yCoord -= MOVE_AMT;
+            if (getyCoord() == 295){
+                moveY = false;
+            }
         }
-        if (getyCoord() == 300 && getxCoord() != 332){
+        if (getxCoord() == 368){
+            moveX = true;
+        }
+        if (getyCoord() == 295 && getxCoord() != 332 && moveX){
             faceLeft();
             xCoord -= MOVE_AMT;
+            if (getxCoord() == 332){
+                moveX = false;
+            }
         }
-        if (getxCoord() == 332 && getyCoord() != 220){
+        if (getyCoord() == 295){
+            moveY = true;
+        }
+        if (getxCoord() == 332 && getyCoord() != 220 && moveY){
             yCoord -= MOVE_AMT;
+            if (getyCoord() == 220){
+                moveY = false;
+            }
         }
-        if (getyCoord() == 220 && getxCoord() != 263){
+        if (getxCoord() == 332){
+            moveX = true;
+        }
+        if (getyCoord() == 220 && getxCoord() != 263 && moveX){
             xCoord -= MOVE_AMT;
+            if (getxCoord() == 263){
+                moveX = false;
+            }
         }
-        if (getxCoord() == 263 && getyCoord() != 159){
+        if (getyCoord() == 220){
+            moveY = true;
+        }
+        if (getxCoord() == 263 && getyCoord() != 159 && moveY){
             yCoord -= MOVE_AMT;
+            if (getyCoord() == 159){
+                moveY = false;
+            }
         }
-        if (getyCoord() == 159 && getxCoord() != 191){
+        if (getxCoord() == 263){
+            moveX = true;
+        }
+        if (getyCoord() == 159 && getxCoord() != 191 && moveX){
             xCoord -= MOVE_AMT;
+            if (getxCoord() == 191){
+                moveX = false;
+            }
         }
-        if (getxCoord() == 191 && getyCoord() != 79){
+        if (getyCoord() == 159){
+            moveY = true;
+        }
+        if (getxCoord() == 191 && getyCoord() != 79 && moveY){
             yCoord -= MOVE_AMT;
+            if (getyCoord() == 79){
+                moveY = false;
+            }
         }
-        if (getyCoord() == 79 && getxCoord() != 71){
+        if (getxCoord() == 191){
+            moveX = true;
+        }
+        if (getyCoord() == 79 && getxCoord() != 71 && moveX){
             xCoord -= MOVE_AMT;
+            if (getxCoord() == 71){
+                moveX = false;
+            }
         }
-        if (getxCoord() == 71 && getyCoord() != 215){
+        if (getyCoord() == 79){
+            moveY = true;
+        }
+        if (getxCoord() == 71 && getyCoord() != 215 && moveY){
             yCoord += MOVE_AMT;
+            if (getyCoord() == 215){
+                moveY = false;
+            }
         }
-        if (getyCoord() == 215 && getxCoord() != 185){
+        if (getxCoord() == 71){
+            moveX = true;
+        }
+        if (getyCoord() == 215 && getxCoord() != 185 && moveX){
             faceRight();
             xCoord += MOVE_AMT;
+            if (getxCoord() == 185){
+                moveX = false;
+            }
         }
-        if (getxCoord() == 185 && getyCoord() != 346){
+        if (getyCoord() == 215){
+            moveY = true;
+        }
+        if (getxCoord() == 185 && getyCoord() != 346 && moveY){
             yCoord += MOVE_AMT;
+            if (getyCoord() == 346){
+                moveY = false;
+            }
         }
-        if (getyCoord() == 346 && getxCoord() != 70){
+        if (getxCoord() == 185){
+            moveX = true;
+        }
+        if (getyCoord() == 346 && getxCoord() != 70 && moveX){
             xCoord -= MOVE_AMT;
         }
         if (getxCoord() == 70){
             xCoord = 659;
         }
-        if (getxCoord() == 659 && getxCoord() != 484){
+        if (getyCoord() == 346 && getxCoord() != 484 && moveX){
             xCoord -= MOVE_AMT;
+            if (getxCoord() == 484){
+                moveX = false;
+            }
         }
-        if (getxCoord() == 484 && getyCoord() != 280){
+        if (getyCoord() == 346){
+            moveY = true;
+        }
+        if (getxCoord() == 484 && getyCoord() != 280 && moveY){
             yCoord -= MOVE_AMT;
+            if (getyCoord() == 280){
+                moveY = false;
+            }
         }
-        if (getyCoord() == 280 && getxCoord() != 368){
+        if (getxCoord() == 484){
+            moveX = true;
+        }
+        if (getyCoord() == 280 && getxCoord() != 368 && moveX){
             xCoord -= MOVE_AMT;
+            if (getxCoord() == 368){
+                moveX = false;
+            }
         }
     }
 }
