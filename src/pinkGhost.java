@@ -77,96 +77,23 @@ public class pinkGhost {
         if (getxCoord() == 368){
             moveX = true;
         }
-        if (getyCoord() == 295 && getxCoord() != 332 && moveX){
+        if (getyCoord() == 295 && getxCoord() != 265 && moveX){
             faceLeft();
             xCoord -= MOVE_AMT;
-            if (getxCoord() == 332){
+            if (getxCoord() == 265){
                 moveX = false;
             }
         }
         if (getyCoord() == 295){
             moveY = true;
         }
-        if (getxCoord() == 332 && getyCoord() != 220 && moveY){
-            yCoord -= MOVE_AMT;
-            if (getyCoord() == 220){
-                moveY = false;
-            }
-        }
-        if (getxCoord() == 332){
-            moveX = true;
-        }
-        if (getyCoord() == 220 && getxCoord() != 263 && moveX){
-            xCoord -= MOVE_AMT;
-            if (getxCoord() == 263){
-                moveX = false;
-            }
-        }
-        if (getyCoord() == 220){
-            moveY = true;
-        }
-        if (getxCoord() == 263 && getyCoord() != 159 && moveY){
-            yCoord -= MOVE_AMT;
-            if (getyCoord() == 159){
-                moveY = false;
-            }
-        }
-        if (getxCoord() == 263){
-            moveX = true;
-        }
-        if (getyCoord() == 159 && getxCoord() != 191 && moveX){
-            xCoord -= MOVE_AMT;
-            if (getxCoord() == 191){
-                moveX = false;
-            }
-        }
-        if (getyCoord() == 159){
-            moveY = true;
-        }
-        if (getxCoord() == 191 && getyCoord() != 79 && moveY){
-            yCoord -= MOVE_AMT;
-            if (getyCoord() == 79){
-                moveY = false;
-            }
-        }
-        if (getxCoord() == 191){
-            moveX = true;
-        }
-        if (getyCoord() == 79 && getxCoord() != 71 && moveX){
-            xCoord -= MOVE_AMT;
-            if (getxCoord() == 71){
-                moveX = false;
-            }
-        }
-        if (getyCoord() == 79){
-            moveY = true;
-        }
-        if (getxCoord() == 71 && getyCoord() != 215 && moveY){
-            yCoord += MOVE_AMT;
-            if (getyCoord() == 215){
-                moveY = false;
-            }
-        }
-        if (getxCoord() == 71){
-            moveX = true;
-        }
-        if (getyCoord() == 215 && getxCoord() != 185 && moveX){
-            faceRight();
-            xCoord += MOVE_AMT;
-            if (getxCoord() == 185){
-                moveX = false;
-            }
-        }
-        if (getyCoord() == 215){
-            moveY = true;
-        }
-        if (getxCoord() == 185 && getyCoord() != 346 && moveY){
+        if (getxCoord() == 265 && getyCoord() != 346 && moveY){
             yCoord += MOVE_AMT;
             if (getyCoord() == 346){
                 moveY = false;
             }
         }
-        if (getxCoord() == 185){
+        if (getxCoord() == 265){
             moveX = true;
         }
         if (getyCoord() == 346 && getxCoord() != 70 && moveX){
@@ -175,27 +102,118 @@ public class pinkGhost {
         if (getxCoord() == 70){
             xCoord = 659;
         }
-        if (getyCoord() == 346 && getxCoord() != 484 && moveX){
+        if (getyCoord() == 346 && getxCoord() != 554 && moveX){
             xCoord -= MOVE_AMT;
-            if (getxCoord() == 484){
+            if (getxCoord() == 554){
                 moveX = false;
             }
         }
         if (getyCoord() == 346){
             moveY = true;
         }
-        if (getxCoord() == 484 && getyCoord() != 280 && moveY){
-            yCoord -= MOVE_AMT;
-            if (getyCoord() == 280){
+        if (getxCoord() == 554 && getyCoord() != 594 && moveY){
+            yCoord += MOVE_AMT;
+            if (getyCoord() == 594){
                 moveY = false;
             }
         }
-        if (getxCoord() == 484){
+        if (getxCoord() == 554){
             moveX = true;
         }
-        if (getyCoord() == 280 && getxCoord() != 368 && moveX){
+        if (getyCoord() == 594 && getxCoord() != 669 && moveX){
+            xCoord += MOVE_AMT;
+            if (getxCoord() == 669){
+                moveX = false;
+            }
+        }
+        if (getyCoord() == 594){
+            moveY = true;
+        }
+        if (getxCoord() == 669 && getyCoord() != 661 && moveY){
+            yCoord += MOVE_AMT;
+            if (getyCoord() == 661){
+                moveY = false;
+            }
+        }
+        if (getxCoord() == 669){
+            moveX = true;
+        }
+        if (getyCoord() == 661 && getxCoord() != 409 && moveX){
             xCoord -= MOVE_AMT;
-            if (getxCoord() == 368){
+            if (getxCoord() == 409){
+                moveX = false;
+            }
+        }
+        if (getyCoord() == 661){
+            moveY = true;
+        }
+        if (getxCoord() == 409 && getyCoord() != 600 && moveY){
+            yCoord -= MOVE_AMT;
+            if (getyCoord() == 600){
+                moveY = false;
+            }
+        }
+        if (getxCoord() == 409){
+            moveX = true;
+        }
+        if (getyCoord() == 600 && getxCoord() != 479 && moveX){
+            faceRight();
+            xCoord += MOVE_AMT;
+            if (getxCoord() == 479){
+                moveX = false;
+            }
+        }
+        if (getyCoord() == 600){
+            moveY = true;
+        }
+        if (getxCoord() == 479 && getyCoord() != 538 && moveY){
+            yCoord -= MOVE_AMT;
+            if (getyCoord() == 538){
+                moveY = false;
+            }
+        }
+        if (getxCoord() == 479){
+            moveX = true;
+        }
+        if (getyCoord() == 538 && getxCoord() != 407 && moveX){
+            xCoord -= MOVE_AMT;
+            if (xCoord == 407){
+                moveX = false;
+            }
+        }
+        if (getyCoord() == 538){
+            moveY = true;
+        }
+        if (getyCoord() != 481 && getxCoord() == 407 && moveY){
+            yCoord -= MOVE_AMT;
+            if (getyCoord() == 481){
+                moveY = false;
+            }
+        }
+        if (getxCoord() == 407){
+            moveX = true;
+        }
+        if (getxCoord() != 480 && getyCoord() == 481 && moveX){
+            xCoord += MOVE_AMT;
+            if (getxCoord() == 480){
+                moveX = false;
+            }
+        }
+        if (getyCoord() == 481){
+            moveY = true;
+        }
+        if (getyCoord() != 295 && getxCoord() == 480 && moveY){
+            yCoord -= MOVE_AMT;
+            if (getyCoord() == 295){
+                moveY = false;
+            }
+        }
+        if (getxCoord() == 480){
+            moveX = true;
+        }
+        if (getxCoord() != 265 && getyCoord() == 295 && moveX){
+            xCoord -= MOVE_AMT;
+            if (getxCoord() == 265){
                 moveX = false;
             }
         }

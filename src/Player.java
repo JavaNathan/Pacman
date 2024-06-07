@@ -16,10 +16,12 @@ public class Player {
     public double xCoord;
     public double yCoord;
     private int score;
+    private int rounds;
     public int lives;
     public ArrayList<Ball> balls;
 
     public Player(String leftImg, String rightImg, int xCoord, int yCoord){
+        rounds = 1;
         facingRight = true;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
@@ -67,6 +69,12 @@ public class Player {
         return lives;
     }
 
+    public void increaseRounds(){
+        rounds++;
+    }
+    public int getRounds(){
+        return rounds;
+    }
     public void faceRight(){
         facingRight = true;
         facingUp = false;

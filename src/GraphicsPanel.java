@@ -56,6 +56,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
 
     public void paintComponent(Graphics g){
         if (player.balls.isEmpty()){
+            player.increaseRounds();
             player.addBalls();
             player.xCoord = 70;
             player.yCoord = 70;
@@ -77,6 +78,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         }
         orangeGhost1.move();
         blueGhost1.move();
+        pinkGhost1.move();
         if (player.getyCoord() >= 340 && player.getyCoord() <= 370 && player.getxCoord() <= 70){
             player.xCoord = 660;
         }
@@ -95,9 +97,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
 
         g.setFont(new Font("Courier New", Font.BOLD, 20));
         g.drawString("Score: " + player.getScore(), 20, 30);
-        g.drawString("X-Coordinates: " + player.getxCoord(), 300, 30);
-        g.drawString("Y-Coordinates: " + player.getyCoord(), 550,30);
+        g.drawString("X: " + player.getxCoord(), 500, 30);
+        g.drawString("Y: " + player.getyCoord(), 650,30);
         g.drawString("Lives: " + player.getLives(), 150, 30);
+        g.drawString("Rounds: " + player.getRounds(), 300,30);
 
         if (pressedKeys[87]){ //Up (W Key)
             player.faceUp();
