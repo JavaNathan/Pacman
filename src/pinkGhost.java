@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 public class pinkGhost {
-    private final double MOVE_AMT = 0.2;
+    private final double MOVE_AMT = 0.15;
     public double xCoord;
     public double yCoord;
     private BufferedImage leftImg;
