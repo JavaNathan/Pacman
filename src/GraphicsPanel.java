@@ -20,6 +20,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
     private boolean wakaPlaying;
     private Clip wakaSound;
     private boolean move;
+    private boolean gamePaused;
 
     public GraphicsPanel(){
         try {
@@ -28,6 +29,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         } catch (IOException e){
             System.out.println(e.getMessage());
         }
+        gamePaused = false;
         move = true;
         player = new Player("src/pacmanleft.png","src/pacmanright.png","src/pacmanup.png","src/pacmandown.png");
         orangeGhost1 = new orangeGhost("src/orangeghostleft.png","src/orangeghostright.png",322,340);
@@ -58,13 +60,20 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
     }
 
     public void paintComponent(Graphics g){
+        super.paintComponent(g);
         if (player.balls.isEmpty()){
             player.increaseRounds();
             player.addBalls();
             player.xCoord = 70;
             player.yCoord = 70;
         }
-        super.paintComponent(g);
+        if (player.getLives() == 0){
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Arial",Font.BOLD,20));
+            g.drawString("GAME OVER!",350,440);
+            gamePaused = true;
+            move = false;
+        }
         g.drawImage(background0,0,0,null);
         g.drawImage(background,40,50,null);
         g.drawImage(player.getPlayerImage(),player.getxCoord(),player.getyCoord(),null);
@@ -102,7 +111,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         g.drawString("Y: " + player.getyCoord(), 650,30);
         g.drawString("Lives: " + player.getLives(), 150, 30);
         g.drawString("Rounds: " + player.getRounds(), 300,30);
-        if (move){
+        if (move && !gamePaused){
             orangeGhost1.move();
             blueGhost1.move();
             pinkGhost1.move();
@@ -134,33 +143,19 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
                 playWaka();
                 wakaPlaying = true;
             }
-            if (pressedKeys[32] && !move){
-                move = true;
-            }
-            if (pressedKeys[32]){
-                move = false;
-                g.setFont(new Font("Arial", Font.BOLD, 20));
-                g.drawString("PAUSED", 350, 440);
-            }
         }
     }
-
     public void keyTyped(KeyEvent e) {} // unimplemented
 
     public void keyPressed(KeyEvent e) {
         // see this for all keycodes: https://stackoverflow.com/questions/15313469/java-keyboard-keycodes-list
         // A = 65, D = 68, S = 83, W = 87, left = 37, up = 38, right = 39, down = 40, space = 32, enter = 10
-        if (move){
-            int key = e.getKeyCode();
-            pressedKeys[key] = true;
-        }
+        int key = e.getKeyCode();
+        pressedKeys[key] = true;
     }
 
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
-        if (key == 32){
-            return;
-        }
         pressedKeys[key] = false;
         wakaSound.close();
         wakaPlaying = false;

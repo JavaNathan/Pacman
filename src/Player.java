@@ -21,7 +21,7 @@ public class Player {
     public ArrayList<Ball> balls;
 
     public Player(String leftImg, String rightImg, int xCoord, int yCoord){
-        rounds = 1;
+        rounds = 0;
         facingRight = true;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
