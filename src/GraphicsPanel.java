@@ -21,6 +21,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
     private Clip wakaSound;
     private boolean move;
     private boolean gamePaused;
+    private int count;
 
     public GraphicsPanel(){
         try {
@@ -29,6 +30,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         } catch (IOException e){
             System.out.println(e.getMessage());
         }
+        count = 1;
         gamePaused = false;
         move = true;
         player = new Player("src/pacmanleft.png","src/pacmanright.png","src/pacmanup.png","src/pacmandown.png");
@@ -60,20 +62,20 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
     }
 
     public void paintComponent(Graphics g){
-        super.paintComponent(g);
+        if (player.getLives() == 0){
+            gamePaused = true;
+            move = false;
+            g.setFont(new Font("Arial",Font.BOLD,20));
+            g.setColor(Color.WHITE);
+            g.drawString("GAME OVER!",350,440);
+        }
         if (player.balls.isEmpty()){
             player.increaseRounds();
             player.addBalls();
             player.xCoord = 70;
             player.yCoord = 70;
         }
-        if (player.getLives() == 0){
-            g.setColor(Color.WHITE);
-            g.setFont(new Font("Arial",Font.BOLD,20));
-            g.drawString("GAME OVER!",350,440);
-            gamePaused = true;
-            move = false;
-        }
+        super.paintComponent(g);
         g.drawImage(background0,0,0,null);
         g.drawImage(background,40,50,null);
         g.drawImage(player.getPlayerImage(),player.getxCoord(),player.getyCoord(),null);
@@ -143,6 +145,18 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
                 playWaka();
                 wakaPlaying = true;
             }
+            if (pressedKeys[32] && !move){
+                gamePaused = false;
+                move = true;
+                count++;
+            }
+            if (pressedKeys[32] && count % 2 != 0){
+                gamePaused = true;
+                move = false;
+                g.setFont(new Font("Arial", Font.BOLD, 20));
+                g.drawString("PAUSED", 350, 440);
+                count++;
+            }
         }
     }
     public void keyTyped(KeyEvent e) {} // unimplemented
@@ -150,15 +164,19 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
     public void keyPressed(KeyEvent e) {
         // see this for all keycodes: https://stackoverflow.com/questions/15313469/java-keyboard-keycodes-list
         // A = 65, D = 68, S = 83, W = 87, left = 37, up = 38, right = 39, down = 40, space = 32, enter = 10
-        int key = e.getKeyCode();
-        pressedKeys[key] = true;
+        if (move){
+            int key = e.getKeyCode();
+            pressedKeys[key] = true;
+        }
     }
 
     public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
-        pressedKeys[key] = false;
-        wakaSound.close();
-        wakaPlaying = false;
+        if (!(!gamePaused && e.getKeyCode() == 32)){
+            int key = e.getKeyCode();
+            pressedKeys[key] = false;
+            wakaSound.close();
+            wakaPlaying = false;
+        }
     }
 
     // ----- MouseListener interface methods -----
