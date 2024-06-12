@@ -8,11 +8,11 @@ public class Ball {
     private int yCoord;
     private BufferedImage image;
 
-    public Ball(int x, int y){
+    public Ball(int x, int y, String image){
         xCoord = x;
         yCoord = y;
         try {
-            image = ImageIO.read(new File("src/yellowball.png"));
+            this.image = ImageIO.read(new File(image));
         } catch (IOException e){
             System.out.println(e.getMessage());
         }

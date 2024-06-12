@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineEvent;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -18,7 +19,9 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
     private final redGhost redGhost1;
     private boolean[] pressedKeys;
     private boolean wakaPlaying;
+    private boolean deathPlaying;
     private Clip wakaSound;
+    private Clip deathSound;
     private boolean move;
     private boolean gamePaused;
     private int count;
@@ -38,6 +41,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         blueGhost1 = new blueGhost("src/blueghostleft.png","src/blueghostright.png",347,340);
         pinkGhost1 = new pinkGhost("src/pinkghostleft.png","src/pinkghostright.png",389,340);
         redGhost1 = new redGhost("src/redghostleft.png","src/redghostright.png",430,340);
+        deathPlaying = false;
         wakaPlaying = false;
         pressedKeys = new boolean[128];
         addKeyListener(this);
@@ -61,8 +65,24 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener{
         }
     }
 
+    private void playDeath(){
+        if (deathPlaying){
+            return;
+        }
+        try {
+            AudioInputStream audioinputstream = AudioSystem.getAudioInputStream(new File("src/Death.wav").getAbsoluteFile());
+            deathSound = AudioSystem.getClip();
+            deathSound.open(audioinputstream);
+            deathSound.start();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void paintComponent(Graphics g){
         if (player.getLives() == 0){
+            playDeath();
+            deathPlaying = true;
             gamePaused = true;
             move = false;
             g.setFont(new Font("Arial",Font.BOLD,20));
