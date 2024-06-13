@@ -43,7 +43,9 @@ public class Player {
         yCoord = 70;
         score = 0;
         balls = new ArrayList<>();
+        pinkBalls = new ArrayList<>();
         addBalls();
+        addPinkBalls();
         try {
             this.leftImg = ImageIO.read(new File(leftImg));
             this.rightImg = ImageIO.read(new File(rightImg));
@@ -254,6 +256,9 @@ public class Player {
     public void collectBall(){
         score++;
     }
+    public void collectGhost(){
+        score += 10;
+    }
     public BufferedImage getPlayerImage() {
         if (facingRight) {
             return rightImg;
@@ -280,8 +285,6 @@ public class Player {
         balls.add(ball1);
         Ball ball2 = new Ball(180,80, "src/yellowball.png");
         balls.add(ball2);
-        Ball ball3 = new Ball(260,80, "src/yellowball.png");
-        balls.add(ball3);
         Ball ball4 = new Ball(330,80, "src/yellowball.png");
         balls.add(ball4);
         Ball ball5 = new Ball(70,160, "src/yellowball.png");
@@ -308,8 +311,6 @@ public class Player {
         balls.add(ball15);
         Ball ball16 = new Ball(470, 80, "src/yellowball.png");
         balls.add(ball16);
-        Ball ball17 = new Ball(540, 80, "src/yellowball.png");
-        balls.add(ball17);
         Ball ball18 = new Ball(610, 80, "src/yellowball.png");
         balls.add(ball18);
         Ball ball19 = new Ball(680, 80, "src/yellowball.png");
@@ -392,21 +393,28 @@ public class Player {
         balls.add(ball57);
         Ball ball58 = new Ball(550,420, "src/yellowball.png");
         balls.add(ball58);
-        Ball ball59 = new Ball(270,360, "src/yellowball.png");
+        Ball ball59 = new Ball(550,360, "src/yellowball.png");
         balls.add(ball59);
-        Ball ball60 = new Ball(460,360, "src/yellowball.png");
+        Ball ball60 = new Ball(280,300, "src/yellowball.png");
         balls.add(ball60);
-        Ball ball61 = new Ball(550,360, "src/yellowball.png");
+        Ball ball61 = new Ball(450,300, "src/yellowball.png");
         balls.add(ball61);
-        Ball ball62 = new Ball(280,300, "src/yellowball.png");
+        Ball ball62 = new Ball(550,300, "src/yellowball.png");
         balls.add(ball62);
-        Ball ball63 = new Ball(450,300, "src/yellowball.png");
+        Ball ball63 = new Ball(90,360, "src/yellowball.png");
         balls.add(ball63);
-        Ball ball64 = new Ball(550,300, "src/yellowball.png");
+        Ball ball64 = new Ball(640,360, "src/yellowball.png");
         balls.add(ball64);
-        Ball ball65 = new Ball(90,360, "src/yellowball.png");
-        balls.add(ball65);
-        Ball ball66 = new Ball(640,360, "src/yellowball.png");
-        balls.add(ball66);
+    }
+
+    public void addPinkBalls(){
+        Ball pinkBall1 = new Ball(460,360,"src/pinkball.png");
+        pinkBalls.add(pinkBall1);
+        Ball pinkBall2 = new Ball(270,360,"src/pinkball.png");
+        pinkBalls.add(pinkBall2);
+        Ball pinkBall3 = new Ball(260,80,"src/pinkball.png");
+        pinkBalls.add(pinkBall3);
+        Ball pinkBall4 = new Ball(540,80,"src/pinkball.png");
+        pinkBalls.add(pinkBall4);
     }
 }
