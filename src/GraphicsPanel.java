@@ -142,7 +142,7 @@ public class GraphicsPanel extends JPanel implements KeyListener{
             redGhost1.moveAmt = 0.2;
             orangeGhost1.moveAmt = 0.175;
             blueGhost1.moveAmt = 0.15;
-            pinkGhost1.moveAmt = 0.175;
+            pinkGhost1.moveAmt = 0.15;
             ghost1Playing = false;
             ghost2Playing = true;
             ghostSound1.stop();
