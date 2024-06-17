@@ -191,6 +191,7 @@ public class GraphicsPanel extends JPanel implements KeyListener{
         if (player.balls.isEmpty()){
             player.increaseRounds();
             player.addBalls();
+            player.addPinkBalls();
             player.xCoord = 70;
             player.yCoord = 70;
         }
